@@ -1,48 +1,53 @@
-
 #include<stdio.h>
-int num,i,j;
-int value = 100000;
-float x = 4.2;
-float arr2[76],array[78],largest = 0;
+#include<stdlib.h>
+int total,i;
+int max=10000000,min=(-10000000), array[78];
+float point;
 int main() {
 printf("How many number you want to entered:");
-scanf("%d",&num);
+scanf("%d",&total);
+
+if(total != 0){
+printf("Which nearest point you want to find,\n Enter the point:");
+scanf("%f",&point);
 printf("Enter the number:\n");
-for(i=0;i<num;i++){
-      scanf("%f",&array[i]);
+for(i=0;i<total;i++){
+      scanf("%d",&array[i]);
  }
-  printf("The value of x => 4.2");
-for(i=0;i<num;i++){
-      if(4.2 > array[i]){
-        arr2[i]= x - array[i];
-       
-   
-      }
-      else{
-        arr2[i]= array[i] - x;
-      }
- }
- printf("\n");
- for(i=0;i<num;i++){
-   printf("%.2f\n",arr2[i]);
- }
-for(i=0;i<num;i++){
-  for(j=1;j<num;j++){
-  if(arr2[i] >= array[i]){
-        if((arr2[i] - array[i]) < value){
-          value = arr2[i] - array[i];
-  }
-  else{
-    if((array[i] - arr2[i]) < value){
-          value = array[i] - arr2[i];
-  }
-  }
-}
-}
-}
-printf("The smallest gap between the number is %.2f\n",value);
+
+// for(i=0;i<total;i++){
+//   int a = array[i];
+// if (!(a<point)){
+//   printf("!!!PLEASE ENTER THE NEAREST POINT PROPERLY\n");
+//   exit(0);
+// }
+// }
 
 
-    return 0;
+
+
+for(i=0;i<total;i++)
+{
+      if((array[i] > point) &&  (array[i] < max))
+      {
+     max = array[i];
+    
+      }
+      
+      if((array[i] < point) &&  (array[i]> min))
+      {
+        min = array[i];
+      }
+ }
+  printf("\nThe nearest point of %d  is %d and %d",point ,min,max);
 }
+else{
+  printf("S!!!!! sorry please enter the number");
+}
+
+ return 0;
+}
+
+
+
 
